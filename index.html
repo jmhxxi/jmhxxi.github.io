@@ -260,6 +260,66 @@
       margin-left: 0.4rem;
     }
 
+    /* PROJECTS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+      border-left: 3px solid var(--accent);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 16px rgba(79,110,247,0.10);
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.45rem;
+    }
+    .project-title {
+      font-weight: 650;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      flex: 1;
+    }
+    .project-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .project-org {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+    }
+    .project-bullets {
+      padding-left: 1rem;
+      list-style: disc;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .project-bullets li {
+      font-size: 0.83rem;
+      color: #374151;
+    }
+    @media (max-width: 600px) {
+      .project-grid { grid-template-columns: 1fr; }
+    }
+
     /* AWARDS */
     .award-list { display: flex; flex-direction: column; gap: 0.8rem; }
     .award-item {
@@ -558,85 +618,101 @@
   <!-- PROJECTS -->
   <section id="projects">
     <h2 class="section-title">Projects</h2>
-    <div class="timeline">
+    <div class="project-grid">
 
-      <div class="tl-item">
-        <div class="tl-org">LLM-driven Supply-Demand Optimization for Semiconductor Manufacturing</div>
-        <div class="tl-date">Mar 2026 –</div>
-        <div class="tl-role">Samsung Electronics</div>
-        <ul class="tl-bullets">
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">LLM-driven Supply-Demand Optimization for Semiconductor Manufacturing</div>
+          <span class="project-date">Mar 2026 –</span>
+        </div>
+        <span class="project-org">Samsung Electronics</span>
+        <ul class="project-bullets">
           <li>LLM-based algorithmic search for supply-demand scheduling</li>
           <li>Formulated industrial problems as combinatorial optimization models</li>
-          <li>Built agentic AI workflows with LLM tool-calling and retrieval-augmented approaches</li>
+          <li>Built agentic AI workflows with LLM tool-calling and RAG approaches</li>
         </ul>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-org">New Material Discovery for Semiconductor Manufacturing using LLMs &amp; Agentic AI</div>
-        <div class="tl-date">May 2025 –</div>
-        <div class="tl-role">Samsung Electronics</div>
-        <ul class="tl-bullets">
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">New Material Discovery for Semiconductor Manufacturing using LLMs &amp; Agentic AI</div>
+          <span class="project-date">May 2025 –</span>
+        </div>
+        <span class="project-org">Samsung Electronics</span>
+        <ul class="project-bullets">
           <li>Developed material property prediction models using ICL, SFT, DPO</li>
-          <li>Designed agentic AI workflows leveraging RAG for semiconductor material discovery</li>
+          <li>Designed agentic AI workflows leveraging RAG for material discovery</li>
         </ul>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-org">Research on Low Latency Streaming TTS</div>
-        <div class="tl-date">May – Dec 2024</div>
-        <div class="tl-role">Samsung Research</div>
-        <ul class="tl-bullets">
-          <li>Conducted research for streaming zero-shot text-to-speech (TTS) technology</li>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Research on Low Latency Streaming TTS</div>
+          <span class="project-date">May – Dec 2024</span>
+        </div>
+        <span class="project-org">Samsung Research</span>
+        <ul class="project-bullets">
+          <li>Conducted research for streaming zero-shot TTS technology</li>
           <li>Aimed at improving low latency performance in TTS systems</li>
         </ul>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-org">Zero-Shot TTS Technology using In-Context Learning</div>
-        <div class="tl-date">Jun – Dec 2023</div>
-        <div class="tl-role">Samsung Research</div>
-        <ul class="tl-bullets">
-          <li>Researched in-context learning-based zero-shot text-to-speech technology</li>
-          <li>Focused on developing TTS systems requiring minimal training data for new speakers</li>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Zero-Shot TTS Technology using In-Context Learning</div>
+          <span class="project-date">Jun – Dec 2023</span>
+        </div>
+        <span class="project-org">Samsung Research</span>
+        <ul class="project-bullets">
+          <li>Researched in-context learning-based zero-shot TTS technology</li>
+          <li>Focused on TTS systems requiring minimal training data for new speakers</li>
         </ul>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-org">Acoustic Modeling for Personalized Voice Synthesis</div>
-        <div class="tl-date">Jul 2021 – Jul 2022</div>
-        <div class="tl-role">Samsung Research</div>
-        <ul class="tl-bullets">
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Acoustic Modeling for Personalized Voice Synthesis</div>
+          <span class="project-date">Jul 2021 – Jul 2022</span>
+        </div>
+        <span class="project-org">Samsung Research</span>
+        <ul class="project-bullets">
           <li>Worked on acoustic modeling techniques to personalize voice synthesis</li>
-          <li>Aimed at creating more natural and customized synthetic voices for users</li>
+          <li>Aimed at creating more natural and customized synthetic voices</li>
         </ul>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-org">End-to-End Multi-Speaker Prosody and Emotion Cloning with Limited Data</div>
-        <div class="tl-date">Apr 2020 – Dec 2021</div>
-        <div class="tl-role">IITP</div>
-        <ul class="tl-bullets">
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">End-to-End Multi-Speaker Prosody and Emotion Cloning with Limited Data</div>
+          <span class="project-date">Apr 2020 – Dec 2021</span>
+        </div>
+        <span class="project-org">IITP</span>
+        <ul class="project-bullets">
           <li>Conducted research on multi-speaker neural vocoder</li>
-          <li>Focused on end-to-end models for prosody and emotion cloning with limited data</li>
+          <li>Focused on end-to-end models for prosody and emotion cloning</li>
         </ul>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-org">AI-based Real-Time Voice Recognition and Synthesis</div>
-        <div class="tl-date">Apr 2020 – Jul 2021</div>
-        <div class="tl-role">SHINSEGAE I&amp;C Inc.</div>
-        <ul class="tl-bullets">
-          <li>Worked on speech enhancement for robust automatic speech recognition (ASR)</li>
-          <li>Developed voice activity detection systems for real-time ASR applications</li>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">AI-based Real-Time Voice Recognition and Synthesis</div>
+          <span class="project-date">Apr 2020 – Jul 2021</span>
+        </div>
+        <span class="project-org">SHINSEGAE I&amp;C Inc.</span>
+        <ul class="project-bullets">
+          <li>Speech enhancement for robust automatic speech recognition</li>
+          <li>Developed voice activity detection for real-time ASR applications</li>
         </ul>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-org">AI-based Real-Time Speech Synthesis</div>
-        <div class="tl-date">Nov 2020 – Nov 2021</div>
-        <div class="tl-role">Samsung Securities Co., Ltd</div>
-        <ul class="tl-bullets">
-          <li>Conducted research on speech synthesis technology tailored for financial services</li>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">AI-based Real-Time Speech Synthesis</div>
+          <span class="project-date">Nov 2020 – Nov 2021</span>
+        </div>
+        <span class="project-org">Samsung Securities Co., Ltd</span>
+        <ul class="project-bullets">
+          <li>Conducted research on speech synthesis tailored for financial services</li>
         </ul>
       </div>
 
