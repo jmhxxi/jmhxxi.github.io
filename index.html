@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Myeonghun Jeong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #4f6ef7;
+      --accent-light: #eef1ff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+      --section-gap: 4rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    section { scroll-margin-top: 64px; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 56px;
+    }
+    .nav-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* LAYOUT */
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    section { margin-bottom: var(--section-gap); }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      margin-bottom: var(--section-gap);
+    }
+    .hero-text { flex: 1; }
+    .hero-name {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .hero-name span { color: var(--accent); }
+    .hero-title {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+    }
+    .hero-bio {
+      font-size: 0.93rem;
+      color: #374151;
+      margin-bottom: 1.5rem;
+    }
+    .hero-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .hero-link:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    .hero-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border);
+      flex-shrink: 0;
+    }
+    .hero-photo-placeholder {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      flex-shrink: 0;
+    }
+
+    /* SECTION HEADER */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* INTERESTS */
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tag {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.3rem 0.75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 20px;
+    }
+
+    /* TIMELINE ITEMS (Education, Experience) */
+    .timeline { display: flex; flex-direction: column; gap: 1.4rem; }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.25rem 1.5rem;
+    }
+    .tl-org { font-weight: 600; font-size: 0.93rem; }
+    .tl-role { font-size: 0.87rem; color: var(--muted); font-style: italic; }
+    .tl-date {
+      font-size: 0.82rem;
+      color: var(--muted);
+      white-space: nowrap;
+      text-align: right;
+      grid-row: 1;
+      grid-column: 2;
+      padding-top: 2px;
+    }
+    .tl-loc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      grid-row: 2;
+      grid-column: 2;
+      text-align: right;
+    }
+    .tl-bullets {
+      grid-column: 1 / -1;
+      margin-top: 0.3rem;
+      padding-left: 1rem;
+      list-style: disc;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .tl-bullets li { font-size: 0.87rem; color: #374151; }
+
+    /* PUBLICATIONS */
+    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .pub-item {
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pub-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(79,110,247,0.08);
+    }
+    .pub-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .pub-authors {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .pub-authors strong { color: var(--text); font-weight: 600; }
+    .pub-venue {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+    }
+    .pub-year {
+      float: right;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .pub-award {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #d97706;
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+      margin-left: 0.4rem;
+    }
+
+    /* AWARDS */
+    .award-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .award-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .award-name { font-size: 0.9rem; font-weight: 500; }
+    .award-year { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* SHOW MORE */
+    .show-more-btn {
+      margin-top: 0.8rem;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: block;
+      width: 100%;
+    }
+    .show-more-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .hidden-pubs { display: none; }
+
+    @media (max-width: 600px) {
+      .hero { flex-direction: column-reverse; align-items: center; gap: 1.5rem; }
+      .hero-name { font-size: 1.8rem; text-align: center; }
+      .hero-title { text-align: center; }
+      .hero-bio { font-size: 0.9rem; }
+      .hero-links { justify-content: center; }
+      .tl-item { grid-template-columns: 1fr; }
+      .tl-date, .tl-loc { text-align: left; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="#about">Myeonghun Jeong</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="Myeonghun_Jeong_CV.pdf" target="_blank">CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="about" class="hero">
+    <div class="hero-text">
+      <h1 class="hero-name"><span>Myeonghun</span> Jeong</h1>
+      <p class="hero-title">Staff Engineer · Samsung Electronics AI Center &nbsp;|&nbsp; Seoul, Republic of Korea</p>
+      <p class="hero-bio">
+        I earned my Ph.D. from Seoul National University under the supervision of Prof. Nam Soo Kim,
+        with a primary focus on speech synthesis and deep generative models.
+        Since March 2025, I have been working at Samsung Electronics, where I research AI for material discovery —
+        post-training large language models (LLMs) as core reasoning engines using techniques such as
+        supervised fine-tuning (SFT) and in-context learning (ICL).
+      </p>
+      <div class="hero-links">
+        <a class="hero-link" href="mailto:eeomg0312@gmail.com">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          Email
+        </a>
+        <a class="hero-link" href="https://www.linkedin.com/in/myeonghun-jeong" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a class="hero-link" href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5 12 0z"/></svg>
+          Google Scholar
+        </a>
+        <a class="hero-link" href="Myeonghun_Jeong_CV.pdf" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          CV (PDF)
+        </a>
+      </div>
+    </div>
+    <img class="hero-photo" src="photo.jpg" alt="Myeonghun Jeong" />
+  </section>
+
+  <!-- RESEARCH INTERESTS -->
+  <section id="interests">
+    <h2 class="section-title">Research Interests</h2>
+    <div class="interests">
+      <span class="tag">Large Language Models</span>
+      <span class="tag">Speech Synthesis</span>
+      <span class="tag">Audio &amp; Speech Signal Processing</span>
+      <span class="tag">Deep Generative Models</span>
+      <span class="tag">AI for Science</span>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h2 class="section-title">Publications</h2>
+    <div class="pub-list" id="pub-list">
+
+      <div class="pub-item">
+        <span class="pub-year">Dec 2025</span>
+        <div class="pub-title">Aligning Reasoning LLMs for Materials Discovery with Physics-aware Rejection Sampling</div>
+        <div class="pub-authors">H. Lee, S. Yoon, J. Park, S.I. Chae, S. Park, J. Ahn, Y. Jung, Y. Chung, H. Chang, M. Kang, J. Kim, H.G. Kim, <strong>M. Jeong</strong></div>
+        <span class="pub-venue">NeurIPS 2025 AI for Science Workshop</span>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">Jan 2026</span>
+        <div class="pub-title">ASVspoof 5: Design, Collection and Validation of Resources for Spoofing, Deepfake, and Adversarial Attack Detection Using Crowdsourced Speech</div>
+        <div class="pub-authors">Xin Wang, ..., <strong>Myeonghun Jeong</strong>, et al.</div>
+        <span class="pub-venue">Computer Speech &amp; Language</span>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">May 2025</span>
+        <div class="pub-title">Utilizing Neural Transducers for Two-Stage Text-to-Speech via Semantic Token Prediction</div>
+        <div class="pub-authors">M. Kim, <strong>M. Jeong</strong>, B. J. Choi, S. Kim, J. Y. Lee, N. S. Kim</div>
+        <span class="pub-venue">IEEE/ACM TASLP</span>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">Apr 2025</span>
+        <div class="pub-title">Evidential-TTS: High Fidelity Zero-Shot Text-to-Speech Using Evidential Deep Learning</div>
+        <div class="pub-authors"><strong>M. Jeong</strong>, M. Kim, S. Kim, N. S. Kim</div>
+        <span class="pub-venue">IEEE ICASSP 2025</span>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">Aug 2025</span>
+        <div class="pub-title">SNR-Aligned Consistent Diffusion for Adaptive Speech Enhancement</div>
+        <div class="pub-authors">Y. Jun, B.J. Woo, <strong>M. Jeong</strong>, N. S. Kim</div>
+        <span class="pub-venue">Interspeech 2025</span>
+      </div>
+
+      <div class="hidden-pubs" id="extra-pubs">
+
+        <div class="pub-item">
+          <span class="pub-year">Sep 2024</span>
+          <div class="pub-title">High Fidelity Text-to-Speech Via Discrete Tokens Using Token Transducer and Group Masked Language Model</div>
+          <div class="pub-authors"><strong>M. Jeong*</strong>, J. Y. Lee*, M. Kim*, J. Lee, H. Y. Cho, N. S. Kim</div>
+          <span class="pub-venue">Interspeech 2024</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Sep 2024</span>
+          <div class="pub-title">MakeSinger: A Semi-Supervised Training Method for Multi-Speaker Singing Voice Synthesis by Classifier-free Diffusion Guidance</div>
+          <div class="pub-authors">S. M. Kim, <strong>M. Jeong</strong>, H. S. Lee, B. J. Choi, M. Kim, N. S. Kim</div>
+          <span class="pub-venue">Interspeech 2024</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Jan 2025</span>
+          <div class="pub-title">Sampling-based Pruned Knowledge Distillation for Training Lightweight RNN-T</div>
+          <div class="pub-authors">S. Kim, D. J. Lee, J. Y. Kang, <strong>M. Jeong</strong>, N. S. Kim</div>
+          <span class="pub-venue">IEEE Signal Processing Letters</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Jan 2025</span>
+          <div class="pub-title">SegINR: Segment-wise Implicit Neural Representation for Sequence Alignment in Neural Text-to-Speech</div>
+          <div class="pub-authors">M. Kim, <strong>M. Jeong</strong>, J. Y. Lee, N. S. Kim</div>
+          <span class="pub-venue">IEEE Signal Processing Letters</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Mar 2024</span>
+          <div class="pub-title">Efficient Parallel Audio Generation Using Group Masked Language Modeling</div>
+          <div class="pub-authors"><strong>M. Jeong</strong>, M. Kim, J. Y. Lee, N. S. Kim</div>
+          <span class="pub-venue">IEEE Signal Processing Letters</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Mar 2024</span>
+          <div class="pub-title">Variable-Length Speaker Conditioning in Flow-Based Text-to-Speech</div>
+          <div class="pub-authors">B. J. Choi, <strong>M. Jeong</strong>, M. Kim, N. S. Kim</div>
+          <span class="pub-venue">IEEE Signal Processing Letters</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Feb 2024</span>
+          <div class="pub-title">Transfer Learning for Low-Resource, Multi-Lingual, and Zero-Shot Multi-Speaker Text-to-Speech</div>
+          <div class="pub-authors"><strong>M. Jeong</strong>, M. Kim, B. J. Choi, J. Yoon, W. Jang, N. S. Kim</div>
+          <span class="pub-venue">IEEE/ACM TASLP</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Dec 2023</span>
+          <div class="pub-title">Transduce and Speak: Neural Transducer for Text-to-Speech with Semantic Token Prediction</div>
+          <div class="pub-authors">M. Kim, <strong>M. Jeong</strong>, B. J. Choi, D. Lee, N. S. Kim</div>
+          <span class="pub-venue">IEEE ASRU 2023</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Aug 2023</span>
+          <div class="pub-title">Towards Single Integrated Spoofing-Aware Speaker Verification Embeddings</div>
+          <div class="pub-authors">S. H. Mun*, H. Shim*, H. Tak, X. Wang, ..., <strong>M. Jeong</strong>, et al.</div>
+          <span class="pub-venue">Interspeech 2023</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Jun 2023</span>
+          <div class="pub-title">Improving Learning Objectives for Speaker Verification from the Perspective of Score Comparison</div>
+          <div class="pub-authors">M. H. Han, S. H. Mun, M. Kim, <strong>M. Jeong</strong>, S. H. Ahn, N. S. Kim</div>
+          <span class="pub-venue">IEEE ICASSP 2023</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Sep 2022</span>
+          <div class="pub-title">Transfer Learning Framework for Low-Resource Text-to-Speech using a Large-Scale Unlabeled Speech Corpus</div>
+          <div class="pub-authors"><strong>M. Jeong*</strong>, M. Kim*, B. J. Choi, S. H. Ahn, J. Y. Lee, N. S. Kim</div>
+          <span class="pub-venue">Interspeech 2022</span>
+          <span class="pub-award">🏆 Best Student Paper</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Nov 2022</span>
+          <div class="pub-title">Adversarial Speaker-Consistency Learning Using Untranscribed Speech Data for Zero-Shot Multi-Speaker Text-to-Speech</div>
+          <div class="pub-authors">B. J. Choi, <strong>M. Jeong</strong>, M. Kim, S. H. Mun, N. S. Kim</div>
+          <span class="pub-venue">APSIPA ASC 2022</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Dec 2022</span>
+          <div class="pub-title">SNAC: Speaker-Normalized Affine Coupling Layer in Flow-Based Architecture for Zero-Shot Multi-Speaker Text-to-Speech</div>
+          <div class="pub-authors">B. J. Choi, <strong>M. Jeong</strong>, J. Y. Lee, N. S. Kim</div>
+          <span class="pub-venue">IEEE Signal Processing Letters</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">Sep 2021</span>
+          <div class="pub-title">Diff-TTS: A Denoising Diffusion Model for Text-to-Speech</div>
+          <div class="pub-authors"><strong>M. Jeong</strong>, H. Kim, S. J. Cheon, B. J. Choi, N. S. Kim</div>
+          <span class="pub-venue">Interspeech 2021</span>
+        </div>
+
+      </div><!-- /hidden-pubs -->
+    </div><!-- /pub-list -->
+
+    <button class="show-more-btn" id="show-more-btn" onclick="togglePubs()">
+      Show all publications ↓
+    </button>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 class="section-title">Work Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-org">Samsung Electronics, AI Center</div>
+        <div class="tl-date">Mar 2025 –</div>
+        <div class="tl-role">Staff Engineer</div>
+        <div class="tl-loc">Suwon, South Korea</div>
+        <ul class="tl-bullets">
+          <li>Development of LLM and agentic AI workflows for scientific material discovery</li>
+          <li>Post-training LLMs using SFT, DPO, and in-context learning for complex scientific tasks</li>
+          <li>LLM-driven supply-demand optimization for semiconductor manufacturing</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-org">Kakao Enterprise Corp.</div>
+        <div class="tl-date">Aug – Dec 2022</div>
+        <div class="tl-role">Research Intern</div>
+        <div class="tl-loc">Seongnam, South Korea</div>
+        <ul class="tl-bullets">
+          <li>Development of in-car speech synthesis services</li>
+          <li>Research on data-efficient, multi-lingual, and zero-shot multi-speaker TTS</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-org">Seoul National University</div>
+        <div class="tl-date">Mar 2020 – Feb 2025</div>
+        <div class="tl-role">Ph.D. in Electrical and Computer Engineering</div>
+        <ul class="tl-bullets">
+          <li>GPA: 4.08 / 4.30</li>
+          <li>Advised by Prof. Nam Soo Kim</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-org">Soongsil University</div>
+        <div class="tl-date">Mar 2014 – Feb 2020</div>
+        <div class="tl-role">B.S. in Electronic Engineering</div>
+        <ul class="tl-bullets">
+          <li>GPA: 4.28 / 4.50 — Ranked 2nd out of 171</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <h2 class="section-title">Awards &amp; Honors</h2>
+    <div class="award-list">
+      <div class="award-item">
+        <span class="award-name">Data Contributor, ASVSpoof 5 Challenge</span>
+        <span class="award-year">2024</span>
+      </div>
+      <div class="award-item">
+        <span class="award-name">Ph.D. Scholarship, Samsung Advanced Institute of Technology (SAIT)</span>
+        <span class="award-year">2023</span>
+      </div>
+      <div class="award-item">
+        <span class="award-name">Best Student Paper Award, Interspeech 2022</span>
+        <span class="award-year">2022</span>
+      </div>
+      <div class="award-item">
+        <span class="award-name">Third Prize, IEEE ICASSP Signal Processing CUP</span>
+        <span class="award-year">2019</span>
+      </div>
+      <div class="award-item">
+        <span class="award-name">National Science and Engineering Scholarship, Korean Minister of Science and ICT</span>
+        <span class="award-year">2019</span>
+      </div>
+    </div>
+
+    <p style="margin-top:1.2rem; font-size:0.85rem; color:var(--muted);">
+      <strong>Academic Reviewer:</strong> IEEE ICASSP 2024, 2025 · Interspeech 2025, 2026 · IEEE Signal Processing Letters · IEEE/ACM TASLP
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 Myeonghun Jeong &nbsp;·&nbsp; Seoul National University Ph.D. · Samsung Electronics
+</footer>
+
+<script>
+  let expanded = false;
+  function togglePubs() {
+    expanded = !expanded;
+    const el = document.getElementById('extra-pubs');
+    const btn = document.getElementById('show-more-btn');
+    if (expanded) {
+      el.style.display = 'contents';
+      btn.textContent = 'Show fewer publications ↑';
+    } else {
+      el.style.display = 'none';
+      btn.textContent = 'Show all publications ↓';
+    }
+  }
+</script>
+
+</body>
+</html>
